@@ -1,0 +1,165 @@
+For firebase install below package
+----------------------------------------
+npm install -g firebase-tools
+npm install firebase @angular/fire
+npm i firebase angularfire2
+
+For Video Angular, install below package
+-----------------------------------------
+npm install videogular2 --save
+npm install @types/core-js --save-dev
+
+add beow line in tsconfig.app.json
+"angularCompilerOptions": {
+  "enableIvy": false
+}
+
+///////////////////////=================================================////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ To solve heap memory error in ng build --prod
+ -------------------------------------------------
+  Solution 1 (Works for me)
+  -----------
+  fist install cross-env
+  npm install --save-dev cross-env
+  then add below in 
+  package.json
+  -------------
+  "scripts": {
+     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 ng build --prod"
+  }
+
+  After that:
+  npm run build
+
+if Solution 1 doesn't work then try below solution 2
+
+Solution 2
+-----------
+  Update to the latest Angular like so: ng update @angular/cli@^8 @angular/core@^8
+  
+  Then
+  package.json
+  ------------
+  "scripts": {
+    "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=prod",
+  }
+  
+  After that:
+  npm run ng-high-memory
+
+///////////////////////=================================================////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+To Solve the CORS issue
+------------------------
+
+The easiest way to configure your data for CORS is with the gsutil command line tool. 
+The installation instructions for gsutil are available at https://cloud.google.com/storage/docs/gsutil_install. 
+Once you've installed gsutil and authenticated with it, you can use it to configure CORS.
+
+For example, if you just want to allow object downloads from your custom domain, 
+put this data in a file named cors.json (replacing "https://example.com" with your domain):
+
+[
+  {
+    "origin": ["https://example.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]
+Then, run this command (replacing "exampleproject.appspot.com" with the name of your bucket):
+
+gsutil cors set cors.json gs://exampleproject.appspot.com
+
+Step 1
+------
+After installation has completed, accept the following options:
+Authenticate Google Cloud SDK
+-----------------------------
+Start Cloud SDK Shell
+Run gcloud init
+
+The installer starts a terminal window and runs the gcloud init command.
+
+Open a command prompt instance.
+
+Run gcloud init at the command prompt.
+
+You receive the following output:
+
+Welcome! This command will take you through the configuration of gcloud.
+ 
+Your current configuration has been set to: [default]
+ 
+To continue, you must login. Would you like to login (Y/n)?
+
+Type "Y" and press enter to login.
+
+The command prints a URL and tries to open a browser window to request access to your project. If a browser window can be opened, you receive the following output:
+
+Your browser has been opened to visit:
+ 
+https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2F...
+
+Go to the next step.
+
+If you are working on a local machine and your browser doesn't automatically load the URL, retry the gcloud init command with the --console-only flag:
+
+gcloud init --console-only
+
+If you use this command, or if the Cloud SDK detects that a browser can not be opened (such as if you are working on a remote machine), you receive the following output:
+
+Go to the following link in your browser:
+ 
+https://accounts.google.com/o/oauth2/auth?redirect_uri=urn%3Aietf%3Awg%3A...
+ 
+Enter verification code:
+
+Open a browser and navigate to the URL provided.
+
+If prompted, sign in with the Google account associated with your Cloud Storage data in the browser window.
+Grant access.
+
+If the browser window opened automatically, review the application permissions and click Accept when you are ready. The verification code is then automatically sent to the command line tool.
+
+If you are working on a remote machine or used the --console-only flag, copy the verification code from the URL and paste it to the terminal command line, after Enter verification code:.
+
+Choose the default project for this configuration.
+
+After setting up your credentials, the gcloud command-line tool prompts you for a default project for this configuration and provides a list of available projects. Select a project ID from the list.
+
+When you set this property, gsutil commands that require a project, such as gsutil mb, use the default project ID unless you override them with the -p flag or set the CLOUDSDK_CORE_PROJECT environment variable.
+
+Step 2
+------
+Setup CORS
+------------
+put this data in a file named cors.json (replacing "https://example.com" with your domain):
+
+[
+  {
+    "origin": ["https://example.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]
+Then, run this command (replacing "exampleproject.appspot.com" with the name of your bucket):
+
+gsutil cors set cors.json gs://exampleproject.appspot.com
+
+gsutil cors set cors.json gs://ig-eschool-db-storage.appspot.com
+ 
+Go to docs
+
+Then, run this command (replacing "exampleproject.appspot.com" with the name of your bucket):
+
+gsutil cors set cors.json gs://exampleproject.appspot.com
+
+for us
+
+gsutil cors set cors.json gs://futureinfotech-storage.appspot.com
+
+///////////////////////=================================================////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+To enable the download of PDF files, we need to install FileSaver package by running following NPM command in terminal:
+
+$ npm install file-saver

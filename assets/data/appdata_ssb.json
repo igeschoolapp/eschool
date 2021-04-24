@@ -1,5 +1,5 @@
 {
-   "jsonSessions":["2022-2023", "2021-2022"],
+   "jsonSessions":["2022-2023", "2021-2022", "2020-2021"],
    "jsonCurrentSession":["2021-2022"],
    "jsonUserRole":["Teacher", "Student"],
    "jsonYesNo":["Y","N"],

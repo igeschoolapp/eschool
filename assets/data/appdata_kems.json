@@ -1,6 +1,6 @@
 {
-   "jsonSessions":["2020-2021", "2021-2022"],
-   "jsonCurrentSession":["2020-2021"],
+   "jsonSessions":["2021-2022", "2020-2021"],
+   "jsonCurrentSession":["2021-2022"],
    "jsonUserRole":["Teacher", "Student"],
    "jsonYesNo":["Y","N"],
    "jsonClasses":["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"],
